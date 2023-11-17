@@ -24,8 +24,21 @@ public class DemoController {
         return data;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("/data/static")
+    public Object statix (@RequestBody Object obj){
+        System.out.println(gson.toJson(obj));
+        Map data=new HashMap();
+        data.put("newUser",10);
+        data.put("newOrder",9);
+        data.put("newManager",3);
+        data.put("totalUser",790797);
+        data.put("totalOrder",70982);
+        data.put("totalManager",8272);
+        return data;
+    }
 
+
+    @GetMapping("/get/all")
     public String getAll (HttpServletRequest request){
         String pas=request.getRequestURI();
         System.out.println(pas);
