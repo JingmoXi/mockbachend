@@ -25,8 +25,7 @@ public class DemoController {
     }
 
     @GetMapping("/data/static")
-    public Object statix (@RequestBody Object obj){
-        System.out.println(gson.toJson(obj));
+    public Object statix (){
         Map data=new HashMap();
         data.put("newUser",10);
         data.put("newOrder",9);
