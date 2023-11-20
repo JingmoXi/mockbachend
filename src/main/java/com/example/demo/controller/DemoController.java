@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 //@CrossOrigin(origins = "*")
@@ -34,6 +33,25 @@ public class DemoController {
         data.put("totalOrder",70982);
         data.put("totalManager",8272);
         return data;
+    }
+
+    //
+    @GetMapping("/user/list")
+    public Object userList (@RequestParam int page, @RequestParam int pageSize){
+        Map result=new HashMap();
+        List<User> users=new ArrayList<User>();
+        for(int i=0;i<pageSize;i++){
+            User user=new User();
+            user.setId(page*pageSize+i);
+            user.setName("user"+(page*pageSize+i));
+            user.setArea("wuhan");
+            user.setDate("2013-11-20 11:10");
+            users.add(user);
+        }
+        result.put("data",users);
+        Random random = new Random();
+        result.put("total", random.nextInt(5000));
+        return result;
     }
 
 
