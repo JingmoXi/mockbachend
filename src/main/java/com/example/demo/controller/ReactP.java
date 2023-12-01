@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.domains.UserMsg;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +39,21 @@ public class ReactP {
         data.put("green",green);
         //
         return data;
+    }
+    @GetMapping("/firstpage/msgs")
+    public Object msgs (){
+
+        List red=new ArrayList<>();
+        //
+        UserMsg u1=new UserMsg("张三","你好带哦好的你好带哦好的");
+        UserMsg u2=new UserMsg("李四","你好带哦好的你好带哦好的");
+        UserMsg u3=new UserMsg("王五","你好带哦好的你好带哦好的");
+        UserMsg u4=new UserMsg("狗蛋","你好带哦好的你好带哦好的");
+        red.add(u1);
+        red.add(u2);
+        red.add(u3);
+        red.add(u4);
+        return red;
     }
 
 
