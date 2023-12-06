@@ -1,13 +1,39 @@
 package com.example.demo.controller;
 
 import com.example.demo.domains.UserMsg;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RestController
 public class ReactP {
+
+    private Map<String,String> tokens=new HashMap<String,String>();
+    //
+    @GetMapping("/reapc/login/check")
+    public Object checkLogined ( @RequestParam String token){
+        System.out.println(token);
+        Map data=new HashMap();
+        if(tokens.containsKey(token)){
+            data.put("code","200");
+        }else{
+            data.put("code","400");
+        }
+        return data;
+    }
+
+
+    @PostMapping("/reapc/login")
+    public Object postAll (@RequestBody UserLogin obj){
+        System.out.println(obj.toString());
+        Map data=new HashMap();
+        data.put("status","ok");
+        UUID uuid = UUID.randomUUID();
+        tokens.put(uuid.toString(),uuid.toString());
+        data.put("token",uuid.toString());
+        return data;
+    }
+
 
     @GetMapping("/firstpage/suamry")
     public Object statix (){
