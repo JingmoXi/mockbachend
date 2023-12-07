@@ -11,10 +11,10 @@ public class Interceptor {
 
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
-        List<Interceptor> tokens = scanner.scanTokens();
+        List<Token> tokens = scanner.scanTokens();
 
         // For now, just print the tokens.
-        for (Interceptor token : tokens) {
+        for (Token token : tokens) {
             System.out.println(token);
         }
     }
